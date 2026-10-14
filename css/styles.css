@@ -7,6 +7,7 @@
   --muted: #84829A;
   --orange: #DF6951;
   --yellow: #F1A501;
+  --grad-cta: linear-gradient(120deg, #FFB534 0%, #F7894A 55%, #EC6A5A 100%);
   --teal: #006380;
   --peach: #FFF1DA;
   --hero-bg: #fdfcf7;   /* el fondo crema de img/hero-viajero.webp */
@@ -58,7 +59,10 @@ ul, ol { list-style: none; }
 }
 @media (hover: hover) { .btn:hover { transform: translateY(-2px); } }
 .btn:active { transform: scale(.98); }
-.btn--yellow { background: var(--yellow); color: #fff; box-shadow: 0 20px 35px rgba(241,165,1,.15); }
+.btn--yellow {
+  background: var(--grad-cta); color: #fff; font-weight: 600; text-shadow: 0 1px 2px rgba(160,60,20,.25);
+  box-shadow: 0 14px 28px rgba(236,106,90,.28), inset 0 1px 0 rgba(255,255,255,.35);
+}
 .btn--orange { background: var(--orange); color: #fff; box-shadow: 0 15px 30px rgba(223,105,81,.25); }
 .btn--outline { border: 1px solid var(--navy); color: var(--navy); padding: 8px 20px; border-radius: 6px; }
 .btn--outline:hover { background: var(--navy); color: #fff; }
@@ -184,19 +188,13 @@ ul, ol { list-style: none; }
 .plan__btn { margin-top: auto; padding: 14px 20px; border-radius: 10px; gap: 8px; }
 .plans__nota { margin-top: 32px; text-align: center; font-size: .95rem; }
 
-/* ---------- Técnico gratis ---------- */
+/* ---------- Técnico a domicilio ---------- */
 .tech__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
 .tech__media { position: relative; }
 .tech__media img {
   width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: 35% center;
   border-radius: 28px; background: var(--peach); box-shadow: 0 30px 60px rgba(24,30,75,.14);
 }
-.tech__badge {
-  position: absolute; right: -18px; bottom: -22px; display: flex; align-items: center; gap: 12px;
-  padding: 14px 20px; background: #fff; border-radius: 18px; box-shadow: var(--shadow);
-  font-size: .85rem; line-height: 1.25; color: var(--text); font-weight: 500;
-}
-.tech__badge strong { font-family: var(--ff-head); font-size: 2.2rem; line-height: 1; color: var(--orange); }
 .tech__text { margin: 18px 0 22px; font-size: 1.02rem; line-height: 1.8; }
 .tech__list { display: grid; gap: 12px; margin-bottom: 30px; }
 .tech__list li { display: flex; gap: 12px; align-items: flex-start; color: var(--navy); font-weight: 500; }
@@ -424,7 +422,7 @@ ul, ol { list-style: none; }
   .hero__actions .btn--big {
     position: fixed; z-index: 40; left: 16px; right: 16px; margin-inline: auto;
     bottom: calc(14px + env(safe-area-inset-bottom)); width: auto; max-width: 420px;
-    box-shadow: 0 14px 30px rgba(241,165,1,.45);
+    border-radius: 999px; box-shadow: 0 12px 26px rgba(236,106,90,.35), inset 0 1px 0 rgba(255,255,255,.35);
   }
   .hero__actions { margin-top: 18px; }
   .hero { z-index: 40; } /* el hero aísla su capa: así el botón fijo queda sobre el resto de secciones */
@@ -460,12 +458,10 @@ ul, ol { list-style: none; }
   .step__arrow { margin-right: 4px; }
   .step p { font-size: .8rem; }
 
-  /* Técnico gratis: foto arriba, texto debajo */
+  /* Técnico a domicilio: foto arriba, texto debajo */
   .tech__inner { grid-template-columns: 1fr; gap: 40px; }
   .tech__inner > * { min-width: 0; }
   .tech__media img { border-radius: 22px; }
-  .tech__badge { right: 12px; bottom: -20px; padding: 10px 16px; }
-  .tech__badge strong { font-size: 1.8rem; }
   .tech__text { font-size: .98rem; margin: 12px 0 18px; }
   .tech__cta { width: 100%; }
 
@@ -517,7 +513,7 @@ ul, ol { list-style: none; }
 .footer__marcas { max-width: 680px; margin: 6px auto 0; font-size: .74rem; line-height: 1.6; color: #7d8090; }
 .footer__call {
   display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 28px;
-  padding: 16px 20px; border-radius: 12px; background: var(--yellow); color: #14151c;
+  padding: 16px 20px; border-radius: 999px; background: var(--grad-cta); color: #fff;
   font-weight: 600; font-size: 1.05rem; transition: filter .2s;
 }
 .footer__call:hover { filter: brightness(1.06); }
@@ -529,15 +525,18 @@ ul, ol { list-style: none; }
 }
 @media (max-width: 860px) {
   .footer { padding: 44px 0 calc(100px + env(safe-area-inset-bottom)); }
-  .footer__grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
-  .footer__contacto, .footer__grid > :nth-child(4) { grid-column: 1 / -1; }
-  .footer li a { padding: 7px 0; }
+  /* Móvil: Servicios · Ayuda · Legales en una fila de 3 columnas; texto y contacto a todo el ancho */
+  .footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 16px; }
+  .footer__brand, .footer__contacto { grid-column: 1 / -1; }
+  .footer h4 { font-size: .7rem; letter-spacing: .08em; margin-bottom: 12px; }
+  .footer li { margin-bottom: 2px; }
+  .footer li a { display: block; padding: 6px 0; font-size: .82rem; line-height: 1.35; }
   .footer__bottom { margin-top: 32px; }
   /* En la portada ya está fijo el botón amarillo del hero; en las demás páginas la barra se fija abajo */
   body:not(.pagina-legal) .footer__call { display: none; }
   .pagina-legal .footer__call {
     position: fixed; z-index: 40; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom));
-    margin: 0 auto; max-width: 420px; box-shadow: 0 14px 30px rgba(241,165,1,.45);
+    margin: 0 auto; max-width: 420px; box-shadow: 0 12px 26px rgba(236,106,90,.35);
     gap: 8px; padding: 16px 12px; font-size: clamp(.86rem, 4vw, 1rem); white-space: nowrap;
   }
 }
