@@ -418,14 +418,8 @@ ul, ol { list-style: none; }
   .hero__badges li { flex-direction: column; justify-content: flex-start; gap: 6px; text-align: center; }
   .hero__badges svg { width: 22px; height: 22px; padding: 4px; }
 
-  /* «Llama ahora» fijo abajo y centrado; sustituye a la barra naranja */
-  .hero__actions .btn--big {
-    position: fixed; z-index: 40; left: 16px; right: 16px; margin-inline: auto;
-    bottom: calc(14px + env(safe-area-inset-bottom)); width: auto; max-width: 420px;
-    border-radius: 999px; box-shadow: 0 12px 26px rgba(236,106,90,.35), inset 0 1px 0 rgba(255,255,255,.35);
-  }
-  .hero__actions { margin-top: 18px; }
-  .hero { z-index: 40; } /* el hero aísla su capa: así el botón fijo queda sobre el resto de secciones */
+  /* En el móvil el «Llama ahora» es la barra fija de abajo (.footer__call), así que el del hero sobra */
+  .hero__actions { display: none; }
 
   /* Beneficios, planes y usos: carruseles deslizables con la siguiente tarjeta asomando */
   .services__grid, .plans__grid, .partners__row {
@@ -511,12 +505,21 @@ ul, ol { list-style: none; }
   text-align: center; display: grid; gap: 8px; font-size: .82rem;
 }
 .footer__marcas { max-width: 680px; margin: 6px auto 0; font-size: .74rem; line-height: 1.6; color: #7d8090; }
+/* «Llama ahora» fijo abajo en todas las páginas. Va fuera del hero y de los .reveal: un ancestro con
+   transform u overflow rompe position: fixed (sobre todo en Safari de iPhone).
+   En la portada (escritorio) main.js le pone .is-oculta mientras el botón del hero está a la vista. */
 .footer__call {
-  display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 28px;
-  padding: 16px 20px; border-radius: 999px; background: var(--grad-cta); color: #fff;
-  font-weight: 600; font-size: 1.05rem; transition: filter .2s;
+  position: fixed; z-index: 60; left: 16px; right: 16px; bottom: calc(18px + env(safe-area-inset-bottom));
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 0 auto; max-width: 420px; padding: 16px 20px; border-radius: 999px;
+  background: var(--grad-cta); color: #fff; font-weight: 600; font-size: 1.05rem; white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(160,60,20,.25);
+  box-shadow: 0 12px 26px rgba(236,106,90,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: filter .2s, opacity .3s, transform .3s;
 }
+.footer__call.is-oculta { opacity: 0; transform: translateY(24px); pointer-events: none; }
 .footer__call:hover { filter: brightness(1.06); }
+.footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); } /* que la barra no tape el pie */
 .footer__call svg { width: 20px; height: 20px; }
 
 @media (max-width: 1024px) {
@@ -532,13 +535,7 @@ ul, ol { list-style: none; }
   .footer li { margin-bottom: 2px; }
   .footer li a { display: block; padding: 6px 0; font-size: .82rem; line-height: 1.35; }
   .footer__bottom { margin-top: 32px; }
-  /* En la portada ya está fijo el botón amarillo del hero; en las demás páginas la barra se fija abajo */
-  body:not(.pagina-legal) .footer__call { display: none; }
-  .pagina-legal .footer__call {
-    position: fixed; z-index: 40; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom));
-    margin: 0 auto; max-width: 420px; box-shadow: 0 12px 26px rgba(236,106,90,.35);
-    gap: 8px; padding: 16px 12px; font-size: clamp(.86rem, 4vw, 1rem); white-space: nowrap;
-  }
+  .footer__call { bottom: calc(14px + env(safe-area-inset-bottom)); gap: 8px; padding: 16px 12px; font-size: clamp(.86rem, 4vw, 1rem); }
 }
 
 /* ==========================================================

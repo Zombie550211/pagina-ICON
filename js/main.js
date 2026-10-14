@@ -11,6 +11,15 @@ const TELEFONO = { mostrar: '(239) 341-9024', marcar: '+12393419024' };
 document.querySelectorAll('[data-tel]').forEach((a) => (a.href = 'tel:' + TELEFONO.marcar));
 document.querySelectorAll('[data-tel-numero]').forEach((el) => (el.textContent = TELEFONO.mostrar));
 
+// ---------- Barra «Llama ahora» fija ----------
+// Se oculta mientras el botón del hero está a la vista (escritorio) para no repetirlo.
+// En el móvil el botón del hero no se muestra, así que la barra queda siempre visible.
+const barraLlamar = document.querySelector('.footer__call');
+const botonHero = document.querySelector('.hero__actions .btn--big');
+if (barraLlamar && botonHero) {
+  new IntersectionObserver(([e]) => barraLlamar.classList.toggle('is-oculta', e.isIntersecting)).observe(botonHero);
+}
+
 // ---------- Header on scroll ----------
 const header = document.getElementById('header');
 const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
