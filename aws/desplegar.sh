@@ -9,12 +9,12 @@
 #   - GitHub CLI con sesión iniciada (gh auth login) o la variable GITHUB_TOKEN
 #     con un token que tenga acceso al repositorio.
 #
-#  Uso:  bash aws/desplegar.sh
+#  Uso:  AWS_PROFILE=connecting bash aws/desplegar.sh
 # ==========================================================
 set -euo pipefail
 
-APP_NOMBRE="miconexionrapida"
-REGION="${AWS_REGION:-us-east-2}"
+APP_NOMBRE="miconexionrapida.com"
+REGION="${AWS_REGION:-us-east-1}"  # us-east-2 ya llegó al límite de apps de Amplify
 REPO="https://github.com/Zombie550211/pagina-ICON"
 RAMA="main"
 DOMINIO="miconexionrapida.com"
@@ -40,7 +40,7 @@ if [[ "$APP_ID" == "None" || -z "$APP_ID" ]]; then
     --platform WEB \
     --repository "$REPO" \
     --access-token "$TOKEN" \
-    --custom-rules '[{"source":"/<*>","target":"/index.html","status":"404-200"}]' \
+    --custom-rules '[{"source":"https://www.miconexionrapida.com","target":"https://miconexionrapida.com","status":"301"},{"source":"/<*>","target":"/index.html","status":"404-200"}]' \
     --query app.appId --output text)
 else
   echo "Ya existe: $APP_ID"

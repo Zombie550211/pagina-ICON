@@ -32,12 +32,12 @@ aws iam put-user-policy \
 Desde la raíz del proyecto, con sesión de GitHub iniciada (`gh auth status`):
 
 ```bash
-bash aws/desplegar.sh
+AWS_PROFILE=connecting bash aws/desplegar.sh
 ```
 
 El script:
 
-1. crea la app `miconexionrapida` en Amplify (us-east-2) y la conecta al repo;
+1. crea la app `miconexionrapida.com` en Amplify (us-east-1) y la conecta al repo;
 2. configura la rama `main` como producción con publicación automática;
 3. lanza la primera publicación y espera a que termine (muestra la URL temporal `*.amplifyapp.com`);
 4. asocia `miconexionrapida.com` y `www.miconexionrapida.com` con certificado SSL.
@@ -58,3 +58,11 @@ El dominio tarda entre 10 minutos y 1 hora en quedar `AVAILABLE`.
 - **Comprobar:** `https://miconexionrapida.com` carga con candado, y `www` redirige al mismo sitio.
 - **Coste:** Amplify cobra por minutos de compilación y GB servidos; para una landing con este
   tamaño suele quedar dentro de la capa gratuita o en pocos dólares al mes.
+
+## Estado actual
+
+- App de Amplify: `miconexionrapida.com` (ID `d29fnjhejrrdt`, región **us-east-1**; us-east-2 llegó al límite de apps).
+- Usuario con permisos en este equipo: perfil `connecting` (`connecting-deploy`).
+- URL de Amplify: https://main.d29fnjhejrrdt.amplifyapp.com
+- Vista previa en GitHub Pages: https://zombie550211.github.io/pagina-ICON/
+- `www.miconexionrapida.com` redirige con 301 a `https://miconexionrapida.com`.
