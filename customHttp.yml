@@ -1,0 +1,33 @@
+# Cabeceras HTTP para AWS Amplify Hosting.
+customHeaders:
+  # Seguridad en todas las respuestas
+  - pattern: '**/*'
+    headers:
+      - key: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: X-Frame-Options
+        value: SAMEORIGIN
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+
+  # HTML: siempre la versión más reciente (los cambios se ven al momento)
+  - pattern: '*.html'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=0, must-revalidate
+
+  # CSS y JS: 1 hora (los nombres de archivo no llevan hash, así que no se cachean mucho)
+  - pattern: '{css,js}/**/*'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=3600
+
+  # Imágenes: 7 días
+  - pattern: 'img/**/*'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=604800

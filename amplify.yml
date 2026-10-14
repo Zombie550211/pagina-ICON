@@ -1,0 +1,15 @@
+# AWS Amplify Hosting: web estática, sin compilación.
+# Solo se publica la web (dist/); la carpeta aws/ y los archivos del repo no quedan accesibles.
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - mkdir -p dist
+        - cp -r *.html css js img dist/
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths: []
