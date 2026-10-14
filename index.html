@@ -142,24 +142,73 @@
     </section>
 
     <!-- ============ PLANES ============ -->
-    <!-- Los planes se pintan desde PLANES en js/main.js. -->
+    <!-- Los planes están escritos aquí (no con JS) para que Google y los lectores sin JS vean precios y botones. -->
     <section class="section plans" id="planes">
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">Planes de internet</p>
           <h2 class="section__title">Elige la velocidad ideal para tu hogar</h2>
         </header>
-        <div class="plans__grid" id="plansGrid"></div>
-        <p class="plans__nota reveal">Precios y disponibilidad según tu dirección. Llámanos y te decimos qué planes llegan a tu casa.</p>
+        <div class="plans__grid" id="plansGrid">
+          <article class="plan reveal">
+            <span class="plan__tag plan__tag--alt">Más popular</span>
+            <h3 class="plan__nombre">Internet 300</h3>
+            <p class="plan__velocidad"><strong>300</strong> Mbps</p>
+            <p class="plan__precio"><strong>$44.99</strong><span> /mes</span></p>
+            <p class="plan__nota">*Precio por 12 meses. Sin contratos a largo plazo.</p>
+            <ul class="plan__incluye">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>WiFi para toda la casa incluido</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Sin límite de datos</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Sin contrato de permanencia</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Instalación estándar gratis</li>
+            </ul>
+            <a href="tel:+12393419024" class="btn btn--outline plan__btn" data-tel data-ubicacion="plan-300">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>Contratar ahora
+            </a>
+          </article>
+          <article class="plan plan--destacado reveal">
+            <span class="plan__tag">Recomendado</span>
+            <h3 class="plan__nombre">Internet + TV</h3>
+            <p class="plan__velocidad"><strong>500</strong> Mbps + TV</p>
+            <p class="plan__precio"><strong>$139.99</strong><span> /mes</span></p>
+            <p class="plan__nota">*Precio especial para nuevos clientes. Sujeto a disponibilidad.</p>
+            <ul class="plan__incluye">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Internet de alta velocidad</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Canales en español incluidos</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Acceso a streaming</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Atención prioritaria</li>
+            </ul>
+            <a href="tel:+12393419024" class="btn btn--orange plan__btn" data-tel data-ubicacion="plan-internet-tv">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>Preguntar precio
+            </a>
+          </article>
+          <article class="plan reveal">
+            <h3 class="plan__nombre">TV + Internet + Línea</h3>
+            <p class="plan__velocidad"><strong>1G</strong> + 200 canales</p>
+            <p class="plan__precio"><strong>$179.99</strong><span> /mes</span></p>
+            <p class="plan__nota">*Precio estimado. Varía según zona y promociones activas.</p>
+            <ul class="plan__incluye">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Más de 200 canales, incluidos en español</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Fibra óptica hasta tu hogar</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>DVR incluido</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Soporte técnico 24/7</li>
+            </ul>
+            <a href="tel:+12393419024" class="btn btn--outline plan__btn" data-tel data-ubicacion="plan-tv-internet-linea">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>Ver disponibilidad
+            </a>
+          </article>
+        </div>
+        <p class="plans__nota reveal">Planes desde <strong>$44.99 al mes</strong>. Los precios son orientativos: la disponibilidad,
+          el precio final y las promociones dependen de tu dirección y del proveedor. Llámanos y te decimos qué planes llegan a tu casa.</p>
       </div>
     </section>
 
     <!-- ============ TÉCNICO A DOMICILIO ============ -->
-    <!-- Foto: img/tecnico.jpeg -->
+    <!-- Foto: img/tecnico.webp -->
     <section class="section tech" id="tecnico">
       <div class="container tech__inner">
         <div class="tech__media reveal">
-          <img src="img/tecnico.jpeg" width="1536" height="1024" loading="lazy"
+          <img src="img/tecnico.webp" width="1200" height="800" decoding="async" loading="lazy"
                alt="Técnico instalando la antena de internet en el techo de una casa">
         </div>
 
@@ -222,7 +271,7 @@
 
         <div class="booking__visual reveal">
           <div class="trip-card">
-            <img src="img/familiaconectada.jpeg" width="1254" height="1254" loading="lazy"
+            <img src="img/familiaconectada.webp" width="900" height="900" decoding="async" loading="lazy"
                  alt="Mujer sonriendo con su portátil en el sofá, con el router de internet junto a ella">
             <h3>Tu hogar conectado</h3>
             <p class="trip-card__meta">Streaming · trabajo · clases · videollamadas</p>

@@ -1,44 +1,11 @@
 // ==========================================================
 //  miconexionrapida.com — landing de internet residencial
-//  Lo que se edita está arriba: TELEFONO y PLANES.
+//  Lo que se edita está arriba: TELEFONO. Los planes están en index.html (#planes).
 // ==========================================================
 
 // ---------- Teléfono (único sitio donde cambiarlo) ----------
 // `marcar` es el que usa el teléfono (con +1 de EE. UU.).
 const TELEFONO = { mostrar: '(239) 341-9024', marcar: '+12393419024' };
-
-// ---------- Planes ----------
-// Cada uno: nombre, velocidad + unidad, precio al mes, nota (letra pequeña), lo que incluye y el texto del botón.
-// `etiqueta` pone la cinta de arriba; `destacado: true` marca el recomendado (borde naranja y botón relleno).
-const PLANES = [
-  {
-    nombre: 'Internet 300',
-    velocidad: '300', unidad: 'Mbps',
-    precio: '44.99',
-    nota: '*Precio por 12 meses. Sin contratos a largo plazo.',
-    incluye: ['WiFi para toda la casa incluido', 'Sin límite de datos', 'Sin contrato de permanencia', 'Instalación estándar gratis'],
-    etiqueta: 'Más popular',
-    boton: 'Contratar ahora',
-  },
-  {
-    nombre: 'Internet + TV',
-    velocidad: '500', unidad: 'Mbps + TV',
-    precio: '139.99',
-    nota: '*Precio especial para nuevos clientes. Sujeto a disponibilidad.',
-    incluye: ['Internet de alta velocidad', 'Canales en español incluidos', 'Acceso a streaming', 'Atención prioritaria'],
-    etiqueta: 'Recomendado',
-    destacado: true,
-    boton: 'Preguntar precio',
-  },
-  {
-    nombre: 'TV + Internet + Línea',
-    velocidad: '1G', unidad: '+ 200 canales',
-    precio: '179.99',
-    nota: '*Precio estimado. Varía según zona y promociones activas.',
-    incluye: ['Más de 200 canales, incluidos en español', 'Fibra óptica hasta tu hogar', 'DVR incluido', 'Soporte técnico 24/7'],
-    boton: 'Ver disponibilidad',
-  },
-];
 
 // ---------- Teléfono en toda la página ----------
 document.querySelectorAll('[data-tel]').forEach((a) => (a.href = 'tel:' + TELEFONO.marcar));
@@ -49,27 +16,6 @@ const header = document.getElementById('header');
 const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
-
-// ---------- Planes ----------
-const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const plansGrid = document.getElementById('plansGrid');
-const listaPlanes = PLANES.length ? PLANES : [
-  { nombre: 'Plan por definir', velocidad: '—', precio: '—', incluye: ['Detalles del plan'] },
-  { nombre: 'Plan por definir', velocidad: '—', precio: '—', incluye: ['Detalles del plan'], destacado: true },
-  { nombre: 'Plan por definir', velocidad: '—', precio: '—', incluye: ['Detalles del plan'] },
-];
-plansGrid.innerHTML = listaPlanes.map((p) => `
-  <article class="plan${p.destacado ? ' plan--destacado' : ''} reveal">
-    ${p.etiqueta || p.destacado ? `<span class="plan__tag${p.destacado ? '' : ' plan__tag--alt'}">${esc(p.etiqueta || 'Recomendado')}</span>` : ''}
-    <h3 class="plan__nombre">${esc(p.nombre)}</h3>
-    <p class="plan__velocidad"><strong>${esc(p.velocidad)}</strong> ${esc(p.unidad || 'Mbps')}</p>
-    <p class="plan__precio"><strong>${p.precio === '—' ? '—' : '$' + esc(p.precio)}</strong><span> /mes</span></p>
-    ${p.nota ? `<p class="plan__nota">${esc(p.nota)}</p>` : ''}
-    <ul class="plan__incluye">${(p.incluye || []).map((x) => `<li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>${esc(x)}</li>`).join('')}</ul>
-    <a href="tel:${TELEFONO.marcar}" class="btn ${p.destacado ? 'btn--orange' : 'btn--outline'} plan__btn">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>${esc(p.boton || 'Pedir este plan')}
-    </a>
-  </article>`).join('');
 
 // ---------- Carruseles (móvil) ----------
 // En el móvil, beneficios y planes se deslizan en horizontal y pasan solos cada CARRUSEL_MS,
