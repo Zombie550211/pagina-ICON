@@ -78,7 +78,10 @@ ul, ol { list-style: none; }
   padding: 28px 0;
 }
 .header.is-scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(24,30,75,.06); padding: 14px 0; }
-.header__inner { display: flex; align-items: center; justify-content: flex-end; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+/* El JPEG tiene fondo gris claro: multiply lo funde con el fondo de la cabecera */
+.header__logo { display: block; flex: none; }
+.header__logo img { display: block; width: 140px; height: auto; mix-blend-mode: multiply; }
 .logo { font-family: var(--ff-body); font-weight: 700; font-size: 2rem; color: var(--navy); letter-spacing: -.02em; }
 .logo span { color: var(--yellow); }
 .nav__list { display: flex; align-items: center; gap: 44px; font-weight: 500; color: var(--navy); }
@@ -360,6 +363,7 @@ ul, ol { list-style: none; }
   .section__head { margin-bottom: 32px; }
   .section__title { font-size: clamp(1.7rem, 7vw, 2.3rem); }
   .header { padding: calc(14px + env(safe-area-inset-top)) 0 14px; }
+  .header__logo img { width: 110px; }
 
   /* Áreas de toque de al menos 44px */
   .header__mobile .btn--sm { min-height: 42px; gap: 8px; padding-inline: 16px; }
