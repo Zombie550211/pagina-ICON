@@ -497,7 +497,7 @@ ul, ol { list-style: none; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr .9fr .7fr 1.1fr 1.2fr; gap: 40px; }
 .footer__logo { display: block; width: 150px; height: auto; margin-bottom: 18px; }
 .footer__brand p { line-height: 1.75; font-size: .85rem; }
-.footer h4 { color: #fff; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+.footer h3 { color: #fff; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
 .footer li { margin-bottom: 4px; }
 .footer li a { display: inline-block; padding: 4px 0; transition: color .2s; }
 .footer a:hover { color: #fff; }
@@ -536,7 +536,7 @@ ul, ol { list-style: none; }
   /* Móvil: Servicios · Ayuda · Legales en una fila de 3 columnas; texto y contacto a todo el ancho */
   .footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 16px; }
   .footer__brand, .footer__contacto { grid-column: 1 / -1; }
-  .footer h4 { font-size: .7rem; letter-spacing: .08em; margin-bottom: 12px; }
+  .footer h3 { font-size: .7rem; letter-spacing: .08em; margin-bottom: 12px; }
   .footer li { margin-bottom: 2px; }
   .footer li a { display: block; padding: 6px 0; font-size: .82rem; line-height: 1.35; }
   .footer__bottom { margin-top: 32px; }
